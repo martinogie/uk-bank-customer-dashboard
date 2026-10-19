@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UK Bank Customer Dashboard</title>
+<meta name="description" content="Tableau dashboard profiling 4,014 UK retail bank customers by nation, age, balance, job type and gender, with KPI cards that compare against the previous month.">
+<style>
+:root{color-scheme:dark;
+  --page:#0b1120;--surface:#151e2e;--ink:#f3f4f6;--ink2:#cbd5e1;--muted:#94a3b8;--ring:#263247;
+  --cyan:#22d3ee;--amber:#f59e0b;--up:#34d399;--down:#f87171;
+  --sans:system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:light){:root:where(:not([data-theme="dark"])){color-scheme:light;
+  --page:#f8fafc;--surface:#ffffff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--ring:#e2e8f0;
+  --cyan:#0891b2;--amber:#b45309;--up:#047857;--down:#b91c1c}}
+:root[data-theme="light"]{color-scheme:light;
+  --page:#f8fafc;--surface:#ffffff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--ring:#e2e8f0;
+  --cyan:#0891b2;--amber:#b45309;--up:#047857;--down:#b91c1c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 56px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan)}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.1;margin:6px 0 8px;letter-spacing:-.01em}
+h2{font-size:18px;margin:0 0 10px}
+p{margin:0 0 10px;max-width:75ch}
+.lede{color:var(--ink2)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 20px}
+.links a{font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--ring);background:var(--surface);padding:6px 12px;border-radius:999px}
+.links a.primary{background:var(--cyan);color:#06202a;border-color:transparent}
+.links a:hover,.links a:focus-visible{border-color:var(--cyan);outline:none}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:16px;min-width:0}
+.kpi .lab{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-size:28px;font-weight:600;margin:2px 0;font-variant-numeric:tabular-nums}
+.kpi .chg{font-size:13px;font-weight:600}
+.up{color:var(--up)}.down{color:var(--down)}
+.viz{padding:0;overflow:hidden}
+.viz .scroll{overflow:auto;-webkit-overflow-scrolling:touch}
+.viz iframe{display:block;border:0;width:1400px;height:920px;background:#0b1120}
+.viz .cap{padding:10px 16px;font-size:13px;color:var(--muted);border-top:1px solid var(--ring)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--ring);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+code{font-size:13px;background:rgba(148,163,184,.12);padding:1px 5px;border-radius:5px}
+ul{padding-left:20px;margin:0}
+li{margin-bottom:6px;color:var(--ink2)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+footer{margin-top:28px;color:var(--muted);font-size:13px}
+footer a{color:var(--ink2)}
+@media (max-width:860px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Retail banking · Customer analytics</div>
+  <h1>UK Bank Customer Dashboard</h1>
+  <p class="lede">Who are the bank's 4,014 retail customers? A one-page Tableau dashboard that profiles the customer base by nation, age, balance, job type and gender. Click any bar or nation to filter the whole page.</p>
+  <div class="links">
+    <a class="primary" href="https://public.tableau.com/app/profile/martins.ogiekpolor/viz/UKBankCustomerDashboard/Dashboard1">Open on Tableau Public</a>
+    <a href="tableau/UK_Bank_Customer_Dashboard.twbx" download>Download the workbook</a>
+    <a href="https://github.com/martinogie/uk-bank-customer-dashboard">Source on GitHub</a>
+    <a href="https://martinogie.github.io/budget-variance-pack/">Budget Variance Pack</a>
+    <a href="https://github.com/martinogie/macro-markets-dashboard">Macro &amp; Markets Dashboard</a>
+  </div>
+
+  <div class="kpis">
+    <div class="card kpi"><div class="lab">Customers</div><div class="val">4,014</div><div class="chg up">▲ +542 joined vs end of November</div></div>
+    <div class="card kpi"><div class="lab">Average balance</div><div class="val">£39,766</div><div class="chg down">▼ −£12 vs end of November</div></div>
+    <div class="card kpi"><div class="lab">Average age</div><div class="val">38.6</div><div class="chg up">▲ +0.1 yrs vs end of November</div></div>
+    <div class="card kpi"><div class="lab">Female share</div><div class="val">46.1%</div><div class="chg up">▲ +0.0 pts vs end of November</div></div>
+  </div>
+
+  <div class="card viz">
+    <div class="scroll">
+      <iframe title="UK Bank Customer Dashboard (interactive, Tableau Public)" loading="lazy"
+        src="https://public.tableau.com/views/UKBankCustomerDashboard/Dashboard1?:embed=y&amp;:showVizHome=no&amp;:display_count=n&amp;:toolbar=bottom"></iframe>
+    </div>
+    <div class="cap">Live dashboard from Tableau Public (1400 × 920; scroll sideways on small screens). If it does not load, see the <a href="images/dashboard.png" style="color:var(--ink2)">screenshot</a>.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Questions it answers</h2>
+      <table>
+        <tr><th>Chart</th><th>Question</th></tr>
+        <tr><td>Map</td><td>Where do our customers live? England holds 2,159, Scotland 1,124, Wales 520 and Northern Ireland 211.</td></tr>
+        <tr><td>Age bars</td><td>Which age groups hold the most customers? Ages 30 to 39 make up about 40%.</td></tr>
+        <tr><td>Balance bars</td><td>How much do customers keep with us? Over three quarters hold under £60K.</td></tr>
+        <tr><td>Job bars</td><td>What do customers do? White collar 48.7%, blue collar 26.1%, other 25.2%.</td></tr>
+        <tr><td>Gender bars</td><td>What is the gender split? Male 53.9%, female 46.1%.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h2>How the KPI arrows work</h2>
+      <p class="lede">Every customer has a join date in 2015. Each card compares the full base with the base as it stood at the end of the month before the latest join month (end of November).</p>
+      <ul>
+        <li><code>Join date = DATEPARSE('dd.MMM.yy', [Date Joined])</code></li>
+        <li><code>Latest month start = DATETRUNC('month', {MAX([Join date])})</code></li>
+        <li><code>Prior avg balance = AVG(IF [Join date] &lt; [Latest month start] THEN [Balance] END)</code></li>
+        <li>The arrow and colour follow the sign of the change (<span class="up">green up</span>, <span class="down">red down</span>) and update when the page is filtered.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Design</h2>
+      <ul>
+        <li>Dark theme: page <span class="sw" style="background:#0b1120;border:1px solid var(--ring)"></span>#0B1120, cards <span class="sw" style="background:#151e2e;border:1px solid var(--ring)"></span>#151E2E with rounded corners.</li>
+        <li>One accent for data: cyan <span class="sw" style="background:#22d3ee"></span>#22D3EE bars, amber <span class="sw" style="background:#f59e0b"></span>#F59E0B for the second gender.</li>
+        <li>Question-style titles, sorted bars and data labels on every chart. Age and balance band widths can be changed with sliders.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Data</h2>
+      <p class="lede">Sample dataset of 4,014 UK retail bank customers with customer ID, gender, age, region, job classification, join date and balance. Names and IDs are fictional. The data travels inside the packaged workbook.</p>
+    </div>
+  </div>
+
+  <footer>Built by Martins Ogiekpolor · <a href="https://github.com/martinogie">github.com/martinogie</a> · Built with AI-assisted coding; the analysis questions, design and review are my own.</footer>
+</div>
+</body>
+</html>
