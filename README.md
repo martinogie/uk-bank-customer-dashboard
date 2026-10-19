@@ -4,7 +4,7 @@ A one-page customer profile for a UK retail bank, built in **Tableau Public**. I
 retail-banking or marketing team asks first about its customer base: where customers live, how old they
 are, how much they keep with the bank, what they do for a living and the gender mix.
 
-**Live dashboard:** [UK Bank Customer Dashboard on Tableau Public](https://public.tableau.com/app/profile/martins.ogiekpolor/viz/UKBankCustomerDashboard/Dashboard1)  
+**Live dashboard:** [UK Bank Customer Dashboard on Tableau Public](https://public.tableau.com/app/profile/martins.ogiekpolor/viz/UKBankCustomerDashboard_17491934471350/Dashboard1)  
 **Project page:** [martinogie.github.io/uk-bank-customer-dashboard](https://martinogie.github.io/uk-bank-customer-dashboard/)
 
 ![UK Bank Customer Dashboard](images/dashboard.png)
